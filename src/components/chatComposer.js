@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { BsDashCircle,BsPencil } from "react-icons/bs";
+import { BsDashCircle,BsPencil,BsSave } from "react-icons/bs";
 
 export default class signup extends React.Component {
 constructor(props){
@@ -69,7 +69,7 @@ render() {
 return (
 <>
 <div className='chatComposer'>
-  <h3>Chatbox</h3>
+  <h3>Chatapp</h3>
     <section>
       <ul>
       {
@@ -77,11 +77,13 @@ return (
         return (
           <li key={index}>
           {message.messages}
-          <BsPencil size={20} title='Edit' 
-            onClick={(e) => this.selectMessage(message.messages,message.id,e)} className='dashboardIcon'/>
-          <BsDashCircle size={20} title='Remove' color='red' 
-            onClick={(e) => this.deleteMessage(message.id, e)} className='dashboardIcon'/>
-          <button onClick={(e) =>this.editUserMessage(message.id, e)}>Update</button>
+          <BsPencil className='icons' size={15} title='Edit' 
+            onClick={(e) => this.selectMessage(message.messages,message.id,e)} />
+          <BsDashCircle className='icons' size={15} title='Remove' 
+            onClick={(e) => this.deleteMessage(message.id, e)} />
+          <BsSave className='icons' size={15} title='Update'
+            onClick={(e) =>this.editUserMessage(message.id, e)}
+          />
           </li>
         )
       })

@@ -29,11 +29,11 @@ return (
           return (
             <li key={index}>
             {user.email}
-            <BsPencil size={20} title='Edit' data-bs-toggle="modal" data-bs-target="#updateNewModal" onClick={(e) => this.selectProduct(
+            <BsPencil size={15} title='Edit' onClick={(e) => this.selectProduct(
                 user.email,
                 user.id,
-                e)} className='dashboardIcon'/>
-                <BsDashCircle size={20} title='Remove' color='red' onClick={(e) => this.deleteRow(user.id, e)} className='dashboardIcon'/>
+                e)} className='icons'/>
+                <BsDashCircle size={15} title='Remove' onClick={(e) => this.deleteRow(user.id, e)} className='icons'/>
             </li>
           )
         })
