@@ -11,6 +11,7 @@ export default class login extends React.Component {
         password: e.target.password.value,
         })
         .then(res => {
+          document.cookie = res.data.id > 0 ? `userId = ${res.data.id}` : '';
           if(res.data === ''){
             alert('Invalid username or password!');
           }else{

@@ -20,39 +20,28 @@ componentDidMount() {
 
 render() {
 return (
-    <div className='container'>
+<div className='contactList'>
     <h3>Contact List</h3>
-    <div className="table-responsive">
-    <table className="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Email Address</th>
-        </tr>
-        </thead> 
-        <tbody className="table-group-divider">
+    <section>
+        <ul>
         {
-            this.state.userList.map((user) =>{
-            return (
-                <>
-                <tr key={user.id}>
-                <th scope="row">{user.id}</th>
-                <td>{user.email}</td>
-                <BsPencil size={40} title='Edit' data-bs-toggle="modal" data-bs-target="#updateNewModal" onClick={(e) => this.selectProduct(
+        this.state.userList.map((user,index) =>{
+          return (
+            <li key={index}>
+            {user.email}
+            <BsPencil size={20} title='Edit' data-bs-toggle="modal" data-bs-target="#updateNewModal" onClick={(e) => this.selectProduct(
                 user.email,
                 user.id,
                 e)} className='dashboardIcon'/>
-                <BsDashCircle size={40} title='Remove' color='red' onClick={(e) => this.deleteRow(user.id, e)} className='dashboardIcon'/>
-                </tr>
-                </>
-            )
-            })
+                <BsDashCircle size={20} title='Remove' color='red' onClick={(e) => this.deleteRow(user.id, e)} className='dashboardIcon'/>
+            </li>
+          )
+        })
         }
-        </tbody>
-    </table>
-    </div>
+        </ul>
+    </section>
 </div>
-  )
+)
 }
 }
 
