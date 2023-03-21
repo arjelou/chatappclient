@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ##### login ##### */
+div.login {
+  display: grid;
+  margin: 0px auto;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin-top: 60px;
+  width: 400px;
+  height: 500px;
+  background-color: rgba(235, 239, 238, 0.449);
+  box-shadow: 3px 10px 20px 5px rgba(61, 54, 54, 0.2);
 }
-
-.App-link {
-  color: #61dafb;
+div.login form {
+  display: grid;
+  margin: 0px auto;
+  width: 300px;
+  padding: 10px 20px;
+  justify-content: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+div.login input{
+  margin-bottom: 15px;
+  width: 200px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: solid 3px orangered;
+  font-weight: 600;
+  font-size: 1rem;
+}
+div.login button{
+  padding: 10px;
+  background-color: transparent;
+  border: solid 3px orangered;
+  font-weight: bolder;
+  font-size: 1rem;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+div.login button:hover{
+  background-color: orangered;
+  border: solid 3px orangered;
+  color: floralwhite;
+  font-weight: bolder;
+  padding: 10px;
+  cursor: pointer;
 }
