@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 import Contactlist from '../components/contactList';
 import ChatComposer from '../components/chatComposer';
 import { BsPersonCircle } from "react-icons/bs";

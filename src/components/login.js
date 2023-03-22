@@ -29,9 +29,9 @@ export default class login extends React.Component {
     
         <form onSubmit={this.userLogin}>
             <h3>Login</h3>
-            <label>Username</label>
+            <label><strong>Username</strong></label>
             <input type='email' placeholder='Enter username' name='email' />
-            <label>Password</label>
+            <label><strong>Password</strong></label>
             <input type='password' placeholder='Enter password' name='password' />
             <button>Login</button> 
         </form>

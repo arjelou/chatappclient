@@ -14,7 +14,11 @@ constructor(props){
  
 newUserSignup = (e) => {
   e.preventDefault();
-  axios.post('http://localhost:4000/signup', {
+  if (e.target.password.value !== e.target.confirmpassword.value){
+      alert('Not matching!')
+      return false;
+  }else{
+    axios.post('http://localhost:4000/signup', {
       email: e.target.email.value,
       password: e.target.password.value,
       confirmpassword: e.target.confirmpassword.value,
@@ -25,6 +29,7 @@ newUserSignup = (e) => {
       .then(res => {
       console.log(res.data);
       })
+  }
 }
 
   render() {
@@ -32,11 +37,11 @@ newUserSignup = (e) => {
     <div className='login'>
         <form onSubmit={this.newUserSignup}>
             <h3>Signup</h3>
-            <label>Username</label>
+            <label><strong>Username</strong></label>
             <input type='email' placeholder='Enter username' name='email' />
-            <label>Password</label>
+            <label><strong>Password</strong></label>
             <input type='password' placeholder='Enter password' name='password'  />
-            <label>Confirm Password</label>
+            <label><strong>Confirm Password</strong></label>
             <input type='password' placeholder='Enter confirm password' name='confirmpassword' />
             <button>Proceed</button> 
         </form>

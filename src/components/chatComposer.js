@@ -8,7 +8,7 @@ constructor(props){
   this.state = {
     messageList: [],
     isOpen: false,
-    currentUserId: document.cookie.split(";").find((row) => row.startsWith("userId"))?.split("=")[1]?.split("")[0]
+    currentUserId: document.cookie.split("; ").find((row) => row.startsWith("userId="))?.split("=")[1]
   }
 }
 componentDidMount(e) {
@@ -79,12 +79,11 @@ return (
       {
       this.state.messageList.map((message) =>{
         return (
-          <li key={message.id}>
+          <li key={message.id} className={this.state.currentUserId.match(message.userId) ? 'you' : 'others'}>
             <p>{message.messages}</p>
-            
           <div className='avatarUsername'>
             <span>Sender Name</span>
-            <span>{this.state.currentUserId === message.userId ? 'You' : 'Others'}</span>
+            <span>{this.state.currentUserId.match(message.userId) ? 'You' : ''}</span>
             <BsPersonCircle size={40} className='avatarMe'/>
           </div>
           <div className='btnIcons'>
