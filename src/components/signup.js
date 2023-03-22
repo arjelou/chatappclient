@@ -40,8 +40,7 @@ newUserSignup = (e) => {
             <input type='password' placeholder='Enter confirm password' name='confirmpassword' />
             <button>Proceed</button> 
         </form>
-        <span>Have an account? <NavLink to='/login'>Login</NavLink></span>         
-
+        <span>Have an account? <NavLink to='/login'>Login</NavLink></span> 
     </div>
   )
 }

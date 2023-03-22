@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import { BsDashCircle,BsPencil,BsSave } from "react-icons/bs";
+import { BsDashCircle,BsPencil,BsSave,BsSendFill,BsPersonCircle } from "react-icons/bs";
 
 export default class signup extends React.Component {
 constructor(props){
   super(props);
   this.state = {
-    messageList: []
+    messageList: [],
+    isOpen: false,
+    currentUserId: document.cookie.split(";").find((row) => row.startsWith("userId"))?.split("=")[1]?.split("")[0]
   }
 }
 componentDidMount(e) {
@@ -50,7 +52,8 @@ deleteMessage(id, e){
 }else{}
 }
 //SELECT MESSAGE FROM 
-selectMessage(messages){
+selectMessage(messages,id){
+  this.setState({isOpen:true})
   document.getElementById("ms").value = messages;
 }
 //UPDATE MESSAGE 
@@ -65,25 +68,38 @@ editUserMessage(id){
     })
 });
 }
+
 render() {
 return (
 <>
-<div className='chatComposer'>
+<div className='chatComposer list-item'>
   <h3>Chatapp</h3>
     <section>
-      <ul>
+      <ul className='scrollable'>
       {
-      this.state.messageList.map((message,index) =>{
+      this.state.messageList.map((message) =>{
         return (
-          <li key={index}>
-          {message.messages}
-          <BsPencil className='icons' size={15} title='Edit' 
-            onClick={(e) => this.selectMessage(message.messages,message.id,e)} />
-          <BsDashCircle className='icons' size={15} title='Remove' 
-            onClick={(e) => this.deleteMessage(message.id, e)} />
-          <BsSave className='icons' size={15} title='Update'
-            onClick={(e) =>this.editUserMessage(message.id, e)}
-          />
+          <li key={message.id}>
+            <p>{message.messages}</p>
+            
+          <div className='avatarUsername'>
+            <span>Sender Name</span>
+            <span>{this.state.currentUserId === message.userId ? 'You' : 'Others'}</span>
+            <BsPersonCircle size={40} className='avatarMe'/>
+          </div>
+          <div className='btnIcons'>
+            <BsPencil className='icons' size={15} title='Edit' 
+              onClick={(e) => this.selectMessage(message.messages,message.id,e)} />
+            <BsDashCircle className='icons' size={15} title='Remove' 
+              onClick={(e) => this.deleteMessage(message.id, e)} />
+              {
+                this.state.isOpen && 
+                (
+                  <BsSave className='icons' size={15} title='Update'
+                    onClick={(e) =>this.editUserMessage(message.id, e)}/>
+                )
+              }
+          </div>
           </li>
         )
       })
@@ -93,13 +109,10 @@ return (
   <section onSubmit={this.pusNewMessage}>
     <form>
       <input type="text" id='ms' name="chat" placeholder='Write Message...' />
-      <button type="submit">Sent</button>
+      <button type="submit"> <BsSendFill size={25} color='orangered'/></button>
     </form>
   </section>
 </div>
-
 </>
-  )
-}
-}
+)}}
 
